@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.konex.drogueria.model.Medicamento;
+import com.konex.drogueria.model.MedicamentoRequest;
 import com.konex.drogueria.repository.MedicamentoRepository;
 
 @Service
@@ -27,8 +28,16 @@ public class MedicamentoServiceImpl implements MedicamentoService {
 	}
 
 	@Override
-	public Medicamento crear(Medicamento medicamento) {
-		return medicamentoRepository.save(medicamento);		
+	public Medicamento crear(MedicamentoRequest medicamento) {
+		Medicamento medicamentoEntity = new Medicamento();
+		medicamentoEntity.setId(medicamento.getId());
+		medicamentoEntity.setNombre(medicamento.getNombre());
+		medicamentoEntity.setLaboratorio(medicamento.getLaboratorio());
+		medicamentoEntity.setFechaFabricacion(medicamento.getFechaFabricacion());
+		medicamentoEntity.setFechaVencimiento(medicamento.getFechaVencimiento());
+		medicamentoEntity.setCantidadStock(medicamento.getCantidadStock());
+		medicamentoEntity.setValorUnitario(medicamento.getValorUnitario());
+		return medicamentoRepository.save(medicamentoEntity);
 	}
 
 	@Override

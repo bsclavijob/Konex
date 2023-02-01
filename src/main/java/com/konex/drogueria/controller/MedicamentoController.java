@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.konex.drogueria.model.Medicamento;
+import com.konex.drogueria.model.MedicamentoRequest;
 import com.konex.drogueria.service.MedicamentoService;
 
 @RestController
@@ -32,7 +33,7 @@ public class MedicamentoController {
 	}
 	
 	@PostMapping(value = "/crear")
-	public ResponseEntity<Boolean> crear(@RequestBody Medicamento medicamento) {
+	public ResponseEntity<Boolean> crear(@RequestBody MedicamentoRequest medicamento) {
 		medicamentoService.crear(medicamento);
 		return ResponseEntity.ok(Boolean.TRUE);
 	}
